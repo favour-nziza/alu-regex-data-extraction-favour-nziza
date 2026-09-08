@@ -1,0 +1,110 @@
+{
+  "summary": {
+    "total_emails": 8,
+    "total_phone_numbers": 7,
+    "total_credit_cards_detected": 3,
+    "valid_credit_cards": 2,
+    "total_urls": 3,
+    "total_ip_addresses": 3,
+    "total_dates": 3,
+    "lines_rejected_as_unsafe": 4
+  },
+  "extracted": {
+    "emails": {
+      "alu_official": [
+        "favour.nziza@alueducation.com",
+        "registrar@aluEducation.com"
+      ],
+      "alu_alumni": [
+        "f.nziza@alumni.alueducation.com",
+        "n.mugisha@alumni.alueducation.com"
+      ],
+      "general": [
+        "f.nziza1@alustudent.com",
+        "n.mugisha2@alustudent.com",
+        "sarah.k@example.com"
+      ],
+      "alu_si": [
+        "jean-paul_uwimana@si.alueducation.com"
+      ]
+    },
+    "phone_numbers": [
+      "+250 788 123 456",
+      "(617) 555-0192",
+      "617.555.0199",
+      "0788-123-456",
+      "+250 (788) 999 222",
+      "4111 1111 1111",
+      "1-800-555-0147 ext. 2210"
+    ],
+    "credit_cards": [
+      {
+        "masked": "************6467",
+        "luhn_valid": true
+      },
+      {
+        "masked": "************9424",
+        "luhn_valid": true
+      },
+      {
+        "masked": "************3456",
+        "luhn_valid": false
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://payments.example.com/receipts/2026/08/998231?ref=abc&verify=1",
+        "https": true
+      },
+      {
+        "url": "http://legacy-billing.internal.example/txn/998231",
+        "https": false
+      },
+      {
+        "url": "https://drive.example.com/file/d/1A2b3C4d5E6f/view?usp=sharing",
+        "https": true
+      }
+    ],
+    "ip_addresses": [
+      "192.168.14.201",
+      "10.0.0.5",
+      "172.16.254.1"
+    ],
+    "dates": [
+      "2026-03-14",
+      "09/07/2026",
+      "2026-09-15"
+    ]
+  },
+  "rejected_lines": [
+    {
+      "line_number": 21,
+      "reason": [
+        "sql_injection"
+      ],
+      "preview": "comment='' OR '1'='1'; DROP TABLE users;--"
+    },
+    {
+      "line_number": 22,
+      "reason": [
+        "script_injection"
+      ],
+      "preview": "user_agent: <script>document.location='http://evil-collector..."
+    },
+    {
+      "line_number": 23,
+      "reason": [
+        "path_traversal"
+      ],
+      "preview": "notes: attempted path traversal in filename field: ../../../..."
+    },
+    {
+      "line_number": 24,
+      "reason": [
+        "null_byte_or_encoded_control",
+        "overflow_probe"
+      ],
+      "preview": "raw_payload: %00%00OVERFLOW_ATTEMPT_AAAAAAAAAAAAAAAAAAAAAAAA..."
+    }
+  ]
+}
